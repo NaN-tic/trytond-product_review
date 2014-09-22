@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.template,review:"
+msgid "Review"
+msgstr "Revisión"
+
+msgctxt "field:product.template,review_description:"
+msgid "Review Description"
+msgstr "Descripción revisión"
+
+msgctxt "view:product.template:"
+msgid "Review"
+msgstr "Revisión"
