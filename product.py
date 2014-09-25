@@ -12,3 +12,7 @@ class Template:
     __name__ = "product.template"
     review = fields.Boolean('Review')
     review_description = fields.Text('Review Description')
+
+    @staticmethod
+    def default_review():
+        return True
