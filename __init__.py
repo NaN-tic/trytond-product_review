@@ -4,7 +4,10 @@
 from trytond.pool import Pool
 from .product import *
 
+
 def register():
     Pool.register(
         Template,
+        ProductReviewType,
+        TemplateProductReviewType,
         module='product_review', type_='model')

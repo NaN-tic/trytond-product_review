@@ -15,5 +15,35 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="inherit" ref="product.template_view_form"/>
             <field name="name">template_form</field>
         </record>
+
+        <!-- product.review.type -->
+        <record model="ir.ui.view" id="product_review_type_view_form">
+            <field name="model">product.review.type</field>
+            <field name="type">form</field>
+            <field name="name">product_review_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_review_type_view_list">
+            <field name="model">product.review.type</field>
+            <field name="type">tree</field>
+            <field name="name">product_review_type_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_review_type">
+            <field name="name">Review Types</field>
+            <field name="res_model">product.review.type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_review_type_list">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_review_type_view_list"/>
+            <field name="act_window" ref="act_product_review_type"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_review_type_form">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_review_type_view_form"/>
+            <field name="act_window" ref="act_product_review_type"/>
+        </record>
+        <menuitem action="act_product_review_type" id="menu_product_review_type"
+            parent="product_configuration.menu_configuration" sequence="50"/>
     </data>
 </tryton>
