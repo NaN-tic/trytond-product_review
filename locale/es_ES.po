@@ -2,6 +2,38 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:product.review.type,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.review.type,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.review.type,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:product.review.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.review.type,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.review.type,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.review.type,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.review.type,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "field:product.template,review:"
 msgid "Review"
 msgstr "Revisión"
@@ -9,6 +41,66 @@ msgstr "Revisión"
 msgctxt "field:product.template,review_description:"
 msgid "Review Description"
 msgstr "Descripción revisión"
+
+msgctxt "field:product.template,review_types:"
+msgid "Review Types"
+msgstr "Tipos de revisiones"
+
+msgctxt "field:product.template-product.review.type,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.template-product.review.type,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:product.template-product.review.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.review.type,product_template:"
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+msgctxt "field:product.template-product.review.type,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-product.review.type,review_type:"
+msgid "Review Type"
+msgstr "Tipo de revisión"
+
+msgctxt "field:product.template-product.review.type,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.template-product.review.type,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "model:ir.action,name:act_product_review_type"
+msgid "Review Types"
+msgstr "Tipos de revisiones"
+
+msgctxt "model:ir.ui.menu,name:menu_product_review_type"
+msgid "Review Types"
+msgstr "Tipos de revisiones"
+
+msgctxt "model:product.review.type,name:"
+msgid "Product Review Type"
+msgstr "Tipo de revisión de producto"
+
+msgctxt "model:product.template-product.review.type,name:"
+msgid "Template - Product Review Type"
+msgstr "Plantilla - Tipo de revisión"
+
+msgctxt "view:product.review.type:"
+msgid "Review Type"
+msgstr "Tipo de revisión"
+
+msgctxt "view:product.review.type:"
+msgid "Review Types"
+msgstr "Tipos de revisiones"
 
 msgctxt "view:product.template:"
 msgid "Review"
