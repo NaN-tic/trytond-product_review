@@ -20,11 +20,12 @@ class Template:
             },
         depends=['review'],
         )
-    review_description = fields.Text('Review Description')
-
-    @staticmethod
-    def default_review():
-        return True
+    review_description = fields.Text('Review Description',
+        states={
+            'invisible': ~Eval('review'),
+            },
+        depends=['review'],
+        )
 
 
 class ProductReviewType(ModelSQL, ModelView):
@@ -32,6 +33,10 @@ class ProductReviewType(ModelSQL, ModelView):
     __name__ = 'product.review.type'
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active', select=True)
+
+    @staticmethod
+    def default_active():
+        return True
 
 
 class TemplateProductReviewType(ModelSQL):
