@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of product_review module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<form string="Review Type" col="4">
+    <label name="date"/>
+    <field name="date"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="review_type"/>
+    <field name="review_type"/>
+    <label name="note"/>
+    <field name="note"/>
+    <label name="state"/>
+    <field name="state"/>
+</form>
