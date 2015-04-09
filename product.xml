@@ -62,6 +62,27 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="name">Reviews</field>
             <field name="res_model">product.review</field>
         </record>
+        <record model="ir.action.act_window.domain"
+                id="act_product_review_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_product_review"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_product_review_domain_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'done')]</field>
+            <field name="act_window" ref="act_product_review"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_product_review_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[]</field>
+            <field name="act_window" ref="act_product_review"/>
+        </record>
         <record model="ir.action.act_window.view" id="act_product_review_list">
             <field name="sequence" eval="10"/>
             <field name="view" ref="product_review_view_list"/>
