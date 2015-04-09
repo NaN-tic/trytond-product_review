@@ -67,6 +67,7 @@ class ProductReview(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ProductReview, cls).__setup__()
+        cls._order.insert(0, ('date', 'ASC'))
         cls._buttons.update({
                 'done': {
                     'invisible': Eval('state') == 'done',
