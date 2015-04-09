@@ -130,6 +130,20 @@ msgctxt "model:ir.action,name:act_product_review_type"
 msgid "Review Types"
 msgstr "Tipos de revisiones"
 
+msgctxt "model:ir.action.act_window.domain,name:act_product_review_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_review_domain_done"
+msgid "Done"
+msgstr "Realizados"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_review_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
 msgctxt "model:ir.ui.menu,name:menu_product_review"
 msgid "Reviews"
 msgstr "Revisiones"
