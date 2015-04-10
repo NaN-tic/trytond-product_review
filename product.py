@@ -57,11 +57,11 @@ class ProductReview(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product', required=True)
     review_type = fields.Many2One('product.review.type', 'Review Type',
         required=True)
-    date = fields.Date('Date')
+    date = fields.Date('Date', required=True)
     state = fields.Selection([
             ('draft', 'Draft'),
             ('done', 'Done'),
-            ], 'State')
+        ], 'State', readonly=True, required=True)
     note = fields.Char('Note')
 
     @classmethod
@@ -78,6 +78,11 @@ class ProductReview(ModelSQL, ModelView):
     @staticmethod
     def default_state():
         return 'draft'
+
+    @staticmethod
+    def default_date():
+        Date = Pool().get('ir.date')
+        return Date.today()
 
     @classmethod
     def done(cls, reviews):
