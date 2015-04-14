@@ -137,7 +137,7 @@ msgstr "Todos"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_review_domain_done"
 msgid "Done"
-msgstr "Realizados"
+msgstr "Finalizado"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_review_domain_draft"
@@ -166,7 +166,7 @@ msgstr "Plantilla - Tipo de revisión"
 
 msgctxt "selection:product.review,state:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "selection:product.review,state:"
 msgid "Draft"
@@ -182,7 +182,7 @@ msgstr "Tipos de revisiones"
 
 msgctxt "view:product.review:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finaliza"
 
 msgctxt "view:product.review:"
 msgid "Review Type"
