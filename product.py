@@ -1,9 +1,22 @@
 # This file is part product_review module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
+from _socket import gaierror, error
+from email.header import Header
+from email.mime.text import MIMEText
+import logging
+from smtplib import SMTPAuthenticationError, SMTPServerDisconnected
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+
+
+try:
+    import emailvalid
+    CHECK_EMAIL = True
+except ImportError:
+    logging.getLogger('Helpdesk').warning(
+    'Unable to import emailvalid. Email validation disabled.')
 
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
@@ -74,6 +87,23 @@ class ProductReview(ModelSQL, ModelView):
                     'icon': 'tryton-go-next',
                     },
                 })
+        cls._error_messages.update({
+                'no_smtp_server_defined': 'You must define an smpt server in '
+                    'order to send scheduled emails warning of new product '
+                    'reviews!',
+                'check_user_emails': 'No users with email defined in group '
+                    'product review!',
+                'subject': 'New list of products to review',
+                'body': 'Dear employee,\n\n'
+                    'Here you have the new list of products to be reviewed:\n'
+                    '\n%s\n\n'
+                    'Thank you for your attention and good job!\n\n'
+                    'Sincerely,\n\nthe Management Team.\n\n'
+                    'Note: This messages has been generated and sent '
+                    'automatically, please do not respond to it.',
+                'smtp_error': 'Error connecting to SMTP server. '
+                    'Emails have not been sent',
+                })
 
     @staticmethod
     def default_state():
@@ -112,3 +142,74 @@ class ProductReview(ModelSQL, ModelView):
             Template.write(*args)
 
         cls.write(reviews, {'state': 'done'})
+
+    @classmethod
+    def send_email(cls, args=None):
+        pool = Pool()
+        SMTPServer = pool.get('smtp.server')
+        ModelData = pool.get('ir.model.data')
+        Model = pool.get('ir.model')
+        Group = pool.get('res.group')
+        Cron = pool.get('ir.cron')
+
+        model, = Model.search([('model', '=', cls.__name__)])
+        smtp_servers = SMTPServer.search([('models', '=', model.id)],
+            limit=1)
+        if not smtp_servers:
+            smtp_servers = SMTPServer.search([('default', '=', True)], limit=1)
+        if not smtp_servers:
+            message = cls.raise_user_error('no_smtp_server_defined',
+                raise_exception=False)
+            logging.getLogger('product_review').info(message)
+            return
+        smtp_server, = smtp_servers
+
+        # Search recipients of emails
+        model_data, = ModelData.search([
+                ('fs_id', '=', 'product_review_group'),
+                ])
+        group, = Group.search([('id', '=', model_data.db_id)])
+        recipients = [u.email for u in group.users if u.email]
+        if not recipients or not any(map(emailvalid.check_email, recipients)):
+            message = cls.raise_user_error('check_user_emails',
+                raise_exception=False)
+            logging.getLogger('product_review').info(message)
+            return
+
+        # Search new reviews to send email
+        model_data, = ModelData.search([
+                ('fs_id', '=', 'cron_product_review_notice'),
+                ])
+        cron, = Cron.search([('id', '=', model_data.db_id)])
+        from_date = cron.write_date or cron.create_date
+        reviews = cls.search([
+                ('create_date', '>', from_date),
+                ('write_date', '=', None),
+                ('state', '=', 'draft'),
+                ])
+        if reviews:
+            records = '\n'.join(['%s: %s %s' %
+                    (r.date, r.product.name, r.review_type.name)
+                    for r in reviews])
+            message = cls.raise_user_error('body', error_args=(records,),
+                raise_exception=False)
+            subject = cls.raise_user_error('subject', raise_exception=False)
+
+            from_ = smtp_server.smtp_email
+            msg = MIMEText(message, _charset='utf-8')
+            msg['Subject'] = Header(subject, 'utf-8')
+            msg['From'] = from_
+            msg['To'] = ', '.join(recipients)
+
+            try:
+                smtp_server = smtp_server.get_smtp_server()
+                smtp_server.sendmail(from_, recipients, msg.as_string())
+                smtp_server.quit()
+            except (SMTPAuthenticationError, SMTPServerDisconnected, gaierror,
+                    error):
+                message = cls.raise_user_error('smtp_error',
+                    raise_exception=False)
+                logging.getLogger('product_review').info(message)
+                cls.raise_user_error('smtp_error')
+
+            cls.write(reviews, {'state': 'draft'})
