@@ -123,7 +123,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
     </data>
 
-    <data depends="sale_pos">
+    <data depends="smtp">
         <record model="ir.cron" id="cron_product_review">
             <field name="name">Products Review</field>
             <field name="request_user" ref="res.user_admin"/>
