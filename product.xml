@@ -121,9 +121,11 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+    </data>
 
-        <record model="ir.cron" id="cron_product_review_notice">
-            <field name="name">Products Review Notice</field>
+    <data depends="sale_pos">
+        <record model="ir.cron" id="cron_product_review">
+            <field name="name">Products Review</field>
             <field name="request_user" ref="res.user_admin"/>
             <field name="user" ref="res.user_trigger"/>
             <field name="active" eval="True"/>

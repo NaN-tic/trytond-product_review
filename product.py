@@ -88,7 +88,7 @@ class ProductReview(ModelSQL, ModelView):
                     },
                 })
         cls._error_messages.update({
-                'no_smtp_server_defined': 'You must define an smpt server in '
+                'no_smtp_server_defined': 'You must define an SMTP server in '
                     'order to send scheduled emails warning of new product '
                     'reviews!',
                 'check_user_emails': 'No users with email defined in group '
@@ -100,7 +100,7 @@ class ProductReview(ModelSQL, ModelView):
                     'Thank you for your attention and good job!\n\n'
                     'Sincerely,\n\nthe Management Team.\n\n'
                     'Note: This messages has been generated and sent '
-                    'automatically, please do not respond to it.',
+                    'automatically, please do not repply.',
                 'smtp_error': 'Error connecting to SMTP server. '
                     'Emails have not been sent',
                 })
@@ -160,7 +160,7 @@ class ProductReview(ModelSQL, ModelView):
         if not smtp_servers:
             message = cls.raise_user_error('no_smtp_server_defined',
                 raise_exception=False)
-            logging.getLogger('product_review').info(message)
+            logging.getLogger('product_review').warning(message)
             return
         smtp_server, = smtp_servers
 
@@ -173,12 +173,12 @@ class ProductReview(ModelSQL, ModelView):
         if not recipients or not any(map(emailvalid.check_email, recipients)):
             message = cls.raise_user_error('check_user_emails',
                 raise_exception=False)
-            logging.getLogger('product_review').info(message)
+            logging.getLogger('product_review').warning(message)
             return
 
         # Search new reviews to send email
         model_data, = ModelData.search([
-                ('fs_id', '=', 'cron_product_review_notice'),
+                ('fs_id', '=', 'cron_product_review'),
                 ])
         cron, = Cron.search([('id', '=', model_data.db_id)])
         from_date = cron.write_date or cron.create_date
@@ -211,5 +211,3 @@ class ProductReview(ModelSQL, ModelView):
                     raise_exception=False)
                 logging.getLogger('product_review').info(message)
                 cls.raise_user_error('smtp_error')
-
-            cls.write(reviews, {'state': 'draft'})
