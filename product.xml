@@ -3,6 +3,13 @@
 The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="res.group" id="product_review_group">
+            <field name="name">Product Review</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_product_review">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="product_review_group"/>
+        </record>
         <record model="ir.ui.view" id="template_view_tree">
             <field name="model">product.template</field>
             <field name="type">tree</field>
@@ -95,5 +102,24 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
         <menuitem action="act_product_review" id="menu_product_review"
             parent="product.menu_main_product" sequence="50"/>
+        <record model="ir.ui.menu-res.group" id="menu_account_group_account">
+            <field name="menu" ref="menu_product_review"/>
+            <field name="group" ref="product_review_group"/>
+        </record>
+        <record model="ir.model.access" id="access_product_review">
+            <field name="model" search="[('model', '=', 'product.review')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_review_group">
+            <field name="model" search="[('model', '=', 'product.review')]"/>
+            <field name="group" ref="product_review_group"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
