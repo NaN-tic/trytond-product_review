@@ -45,7 +45,7 @@ class Template:
 class ProductReviewType(ModelSQL, ModelView):
     'Product Review Type'
     __name__ = 'product.review.type'
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     active = fields.Boolean('Active', select=True)
 
     @staticmethod
