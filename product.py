@@ -41,6 +41,25 @@ class Template:
         depends=['review'],
         )
 
+    @staticmethod
+    def default_review():
+        pool = Pool()
+        Config = pool.get('product.configuration')
+        config = Config.get_singleton()
+        if config:
+            return config.review
+
+    @staticmethod
+    def default_review_types():
+        pool = Pool()
+        Config = pool.get('product.configuration')
+        Configuration = pool.get('product.configurations.product.review.type')
+        config = Config.get_singleton()
+        if config and config.review:
+            configurations = Configuration.search([])
+            return [c.review_type.id for c in configurations
+                if c.review_type.active]
+
 
 class ProductReviewType(ModelSQL, ModelView):
     'Product Review Type'
