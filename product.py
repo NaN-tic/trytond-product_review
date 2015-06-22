@@ -59,6 +59,7 @@ class Template:
             configurations = Configuration.search([])
             return [c.review_type.id for c in configurations
                 if c.review_type.active]
+        return []
 
 
 class ProductReviewType(ModelSQL, ModelView):
