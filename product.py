@@ -4,20 +4,19 @@
 from _socket import gaierror, error
 from email.header import Header
 from email.mime.text import MIMEText
-import logging
 from smtplib import SMTPAuthenticationError, SMTPServerDisconnected
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+import logging
 
+logger = logging.getLogger(__name__)
 
 try:
     import emailvalid
     CHECK_EMAIL = True
 except ImportError:
-    logging.getLogger('Helpdesk').warning(
-    'Unable to import emailvalid. Email validation disabled.')
-
+    logger.error('Unable to import emailvalid. Install emailvalid package.')
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
     'ProductReview']
@@ -180,7 +179,7 @@ class ProductReview(ModelSQL, ModelView):
         if not smtp_servers:
             message = cls.raise_user_error('no_smtp_server_defined',
                 raise_exception=False)
-            logging.getLogger('product_review').warning(message)
+            logger.warning(message)
             return
         smtp_server, = smtp_servers
 
@@ -193,7 +192,7 @@ class ProductReview(ModelSQL, ModelView):
         if not recipients or not any(map(emailvalid.check_email, recipients)):
             message = cls.raise_user_error('check_user_emails',
                 raise_exception=False)
-            logging.getLogger('product_review').warning(message)
+            logger.warning(message)
             return
 
         # Search new reviews to send email
@@ -229,5 +228,5 @@ class ProductReview(ModelSQL, ModelView):
                     error):
                 message = cls.raise_user_error('smtp_error',
                     raise_exception=False)
-                logging.getLogger('product_review').info(message)
+                logger.info(message)
                 cls.raise_user_error('smtp_error')
