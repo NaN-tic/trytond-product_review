@@ -7,10 +7,10 @@ from .product import *
 
 def register():
     Pool.register(
-        Template,
-        ProductReviewType,
-        TemplateProductReviewType,
-        ProductReview,
         Configuration,
+        ProductReviewType,
         ProductConfigurationReviewType,
+        ProductReview,
+        Template,
+        TemplateProductReviewType,
         module='product_review', type_='model')
