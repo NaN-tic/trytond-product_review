@@ -98,7 +98,7 @@ msgstr "Usuari modificació"
 
 msgctxt "field:product.review,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:product.review,create_uid:"
 msgid "Create User"
@@ -134,7 +134,7 @@ msgstr "Estat"
 
 msgctxt "field:product.review,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:product.review,write_uid:"
 msgid "Write User"
@@ -146,7 +146,7 @@ msgstr "Actiu"
 
 msgctxt "field:product.review.type,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:product.review.type,create_uid:"
 msgid "Create User"
@@ -166,7 +166,7 @@ msgstr "Nom"
 
 msgctxt "field:product.review.type,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:product.review.type,write_uid:"
 msgid "Write User"
@@ -186,7 +186,7 @@ msgstr "Tipus de revisions"
 
 msgctxt "field:product.template-product.review.type,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:product.template-product.review.type,create_uid:"
 msgid "Create User"
@@ -210,7 +210,7 @@ msgstr "Tipus de revisió"
 
 msgctxt "field:product.template-product.review.type,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:product.template-product.review.type,write_uid:"
 msgid "Write User"
@@ -249,6 +249,10 @@ msgid "Draft"
 msgstr "Esborrany"
 
 msgctxt "model:ir.cron,name:"
+msgid "Products Review"
+msgstr "Revisió de productes"
+
+msgctxt "model:ir.cron,name:cron_product_review"
 msgid "Products Review"
 msgstr "Revisió de productes"
 
