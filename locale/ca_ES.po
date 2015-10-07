@@ -64,38 +64,6 @@ msgctxt "field:product.configuration,review_types:"
 msgid "Review Types"
 msgstr "Tipus de revisions"
 
-msgctxt "field:product.configurations.product.review.type,configuration:"
-msgid "Product Configuration"
-msgstr "Producte"
-
-msgctxt "field:product.configurations.product.review.type,create_date:"
-msgid "Create Date"
-msgstr "Data creació"
-
-msgctxt "field:product.configurations.product.review.type,create_uid:"
-msgid "Create User"
-msgstr "Usuari creació"
-
-msgctxt "field:product.configurations.product.review.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.configurations.product.review.type,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:product.configurations.product.review.type,review_type:"
-msgid "Review Type"
-msgstr "Tipus de revisió"
-
-msgctxt "field:product.configurations.product.review.type,write_date:"
-msgid "Write Date"
-msgstr "Data modificació"
-
-msgctxt "field:product.configurations.product.review.type,write_uid:"
-msgid "Write User"
-msgstr "Usuari modificació"
-
 msgctxt "field:product.review,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -259,10 +227,6 @@ msgstr "Revisions"
 msgctxt "model:ir.ui.menu,name:menu_product_review_type"
 msgid "Review Types"
 msgstr "Tipus de revisions"
-
-msgctxt "model:product.configurations.product.review.type,name:"
-msgid "Product Configuration - Product Review Type"
-msgstr "Configuració producte - Tipus de revisions"
 
 msgctxt "model:product.review,name:"
 msgid "Product Review"
