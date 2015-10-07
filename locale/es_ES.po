@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -249,10 +249,6 @@ msgid "Draft"
 msgstr "Borrador"
 
 msgctxt "model:ir.cron,name:"
-msgid "Products Review"
-msgstr "Revisión de productos"
-
-msgctxt "model:ir.cron,name:cron_product_review"
 msgid "Products Review"
 msgstr "Revisión de productos"
 
