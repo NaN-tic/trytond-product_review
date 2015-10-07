@@ -12,9 +12,8 @@ class Configuration:
     __name__ = 'product.configuration'
     review = fields.Boolean('Review',
         help='Default value for the review field in template form.')
-    review_types = fields.Many2Many(
-        'product.configurations.product.review.type', 'configuration',
-        'review_type', 'Review Types',
+    review_types = fields.Many2Many('product.configuration.product.review.type',
+        'configuration', 'review_type', 'Review Types',
         states={
             'invisible': ~Eval('review', False),
         },
@@ -23,8 +22,8 @@ class Configuration:
 
 class ProductConfigurationReviewType(ModelSQL):
     'Product Configuration - Product Review Type'
-    __name__ = 'product.configurations.product.review.type'
-    _table = 'product_configuration_product_review_type_rel'
+    __name__ = 'product.configuration.product.review.type'
+    _table = 'product_config_product_review_type'
     configuration = fields.Many2One('product.configuration',
         'Product Configuration', ondelete='CASCADE', required=True)
     review_type = fields.Many2One('product.review.type', 'Review Type',
