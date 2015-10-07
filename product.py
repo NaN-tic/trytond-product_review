@@ -52,7 +52,8 @@ class Template:
     def default_review_types():
         pool = Pool()
         Config = pool.get('product.configuration')
-        Configuration = pool.get('product.configurations.product.review.type')
+        Configuration = pool.get('product.configuration.product.review.type')
+
         config = Config.get_singleton()
         if config and config.review:
             configurations = Configuration.search([])
