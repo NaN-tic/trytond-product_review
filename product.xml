@@ -51,7 +51,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="act_window" ref="act_product_review_type"/>
         </record>
         <menuitem action="act_product_review_type" id="menu_product_review_type"
-            parent="product_configuration.menu_configuration" sequence="50"/>
+            parent="product.menu_configuration" sequence="50"/>
 
         <!-- product.review -->
         <record model="ir.ui.view" id="product_review_view_list">
