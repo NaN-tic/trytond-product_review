@@ -36,10 +36,10 @@ class ProductConfigurationReviewType(ModelSQL):
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
 
-        super(ProductConfigurationReviewType, cls).__register__(module_name)
-
         # Migration from 3.6: rename table
         old_table = 'product_configuration_product_review_type_rel'
         new_table = 'product_config_product_review_type'
         if TableHandler.table_exist(cursor, old_table):
             TableHandler.table_rename(cursor, old_table, new_table)
+
+        super(ProductConfigurationReviewType, cls).__register__(module_name)
