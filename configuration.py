@@ -3,7 +3,6 @@
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['Configuration', 'ProductConfigurationReviewType']
@@ -34,12 +33,11 @@ class ProductConfigurationReviewType(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         # Migration from 3.6: rename table
         old_table = 'product_configuration_product_review_type_rel'
         new_table = 'product_config_product_review_type'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, new_table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, new_table)
 
         super(ProductConfigurationReviewType, cls).__register__(module_name)
