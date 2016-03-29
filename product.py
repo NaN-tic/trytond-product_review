@@ -20,10 +20,10 @@ except ImportError:
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
     'ProductReview']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     review = fields.Boolean('Review')
     review_types = fields.Many2Many('product.template-product.review.type',

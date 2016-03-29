@@ -6,10 +6,10 @@ from trytond.pyson import Eval
 from trytond import backend
 
 __all__ = ['Configuration', 'ProductConfigurationReviewType']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'product.configuration'
     review = fields.Boolean('Review',
         help='Default value for the review field in template form.')
