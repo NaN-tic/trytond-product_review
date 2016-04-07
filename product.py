@@ -1,13 +1,12 @@
 # This file is part product_review module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
-from _socket import gaierror, error
 from email.header import Header
 from email.mime.text import MIMEText
-from smtplib import SMTPAuthenticationError, SMTPServerDisconnected
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 import logging
 
 logger = logging.getLogger(__name__)
@@ -221,13 +220,6 @@ class ProductReview(ModelSQL, ModelView):
             msg['From'] = from_
             msg['To'] = ', '.join(recipients)
 
-            try:
-                smtp_server = smtp_server.get_smtp_server()
-                smtp_server.sendmail(from_, recipients, msg.as_string())
-                smtp_server.quit()
-            except (SMTPAuthenticationError, SMTPServerDisconnected, gaierror,
-                    error):
-                message = cls.raise_user_error('smtp_error',
-                    raise_exception=False)
-                logger.info(message)
-                cls.raise_user_error('smtp_error')
+            datamanager = SMTPDataManager()
+            datamanager._server = smtp_server.get_smtp_server()
+            sendmail_transactional(from_, recipients, msg, datamanager=datamanager)
