@@ -20,10 +20,10 @@ except ImportError:
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
     'ProductReview']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     review = fields.Boolean('Review')
     review_types = fields.Many2Many('product.template-product.review.type',
@@ -47,19 +47,6 @@ class Template:
         config = Config.get_singleton()
         if config:
             return config.review
-
-    @staticmethod
-    def default_review_types():
-        pool = Pool()
-        Config = pool.get('product.configuration')
-        Configuration = pool.get('product.configuration.product.review.type')
-
-        config = Config.get_singleton()
-        if config and config.review:
-            configurations = Configuration.search([])
-            return [c.review_type.id for c in configurations
-                if c.review_type.active]
-        return []
 
 
 class ProductReviewType(ModelSQL, ModelView):

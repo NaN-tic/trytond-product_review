@@ -2,15 +2,14 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from trytond.pool import Pool
-from .configuration import *
-from .product import *
+import configuration
+import product
 
 def register():
     Pool.register(
-        Configuration,
-        ProductReviewType,
-        ProductConfigurationReviewType,
-        ProductReview,
-        Template,
-        TemplateProductReviewType,
+        configuration.Configuration,
+        product.ProductReviewType,
+        product.ProductReview,
+        product.Template,
+        product.TemplateProductReviewType,
         module='product_review', type_='model')
