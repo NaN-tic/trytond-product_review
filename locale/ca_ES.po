@@ -60,10 +60,6 @@ msgctxt "field:product.configuration,review:"
 msgid "Review"
 msgstr "Revisió"
 
-msgctxt "field:product.configuration,review_types:"
-msgid "Review Types"
-msgstr "Tipus de revisions"
-
 msgctxt "field:product.review,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -185,14 +181,8 @@ msgid "Write User"
 msgstr "Usuari modificació"
 
 msgctxt "help:product.configuration,review:"
-msgid "Default value for the review field in template form."
-msgstr "Valor per defecte de revisió de la plantilla del producte."
-
-msgctxt "help:product.configuration,review_types:"
-msgid "Default value for review types when default review is activated"
-msgstr ""
-"Valor per defecte pels tipus de revisions quan el valor per defecte de "
-"revisió està actiu."
+msgid "Active review option in product."
+msgstr "Activa la opció revisió en el producte."
 
 msgctxt "model:ir.action,name:act_product_review"
 msgid "Reviews"
@@ -217,6 +207,10 @@ msgid "Draft"
 msgstr "Esborrany"
 
 msgctxt "model:ir.cron,name:"
+msgid "Products Review"
+msgstr "Revisió de productes"
+
+msgctxt "model:ir.cron,name:cron_product_review"
 msgid "Products Review"
 msgstr "Revisió de productes"
 

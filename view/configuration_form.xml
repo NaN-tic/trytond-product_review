@@ -5,6 +5,5 @@ copyright notices and license terms. -->
     <xpath expr="/form" position="inside">
         <label name="review"/>
         <field name="review"/>
-        <field name="review_types" colspan="4"/>
     </xpath>
 </data>
