@@ -2,7 +2,7 @@
 <!-- This file is part of product_review module for Tryton.
 The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
-<form string="Review Type" col="4">
+<form col="4">
     <label name="date"/>
     <field name="date"/>
     <label name="product"/>

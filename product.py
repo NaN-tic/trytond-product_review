@@ -72,7 +72,6 @@ class TemplateProductReviewType(ModelSQL):
 class ProductReview(ModelSQL, ModelView):
     'Product Review'
     __name__ = 'product.review'
-    _rec_name = 'product'
     product = fields.Many2One('product.product', 'Product', required=True)
     review_type = fields.Many2One('product.review.type', 'Review Type',
         required=True)
@@ -119,6 +118,11 @@ class ProductReview(ModelSQL, ModelView):
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
+
+    def get_rec_name(self, name):
+        if self.product:
+            return self.product.rec_name
+        return '(%s)' % self.id
 
     @classmethod
     def done(cls, reviews):

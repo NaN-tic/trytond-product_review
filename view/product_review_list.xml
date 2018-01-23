@@ -2,7 +2,7 @@
 <!-- This file is part of product_review module for Tryton.
 The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
-<tree string="Review Types" editable="bottom">
+<tree editable="bottom">
     <field name="date"/>
     <field name="product"/>
     <field name="review_type"/>
