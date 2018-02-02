@@ -13,8 +13,8 @@ logger = logging.getLogger(__name__)
 
 try:
     import emailvalid
-    CHECK_EMAIL = True
 except ImportError:
+    emailvalid = None
     logger.error('Unable to import emailvalid. Install emailvalid package.')
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
@@ -79,7 +79,7 @@ class ProductReview(ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', 'Draft'),
             ('done', 'Done'),
-        ], 'State', readonly=True, required=True)
+            ], 'State', readonly=True, required=True)
     note = fields.Char('Note')
 
     @classmethod
@@ -93,21 +93,21 @@ class ProductReview(ModelSQL, ModelView):
                     },
                 })
         cls._error_messages.update({
-                'no_smtp_server_defined': 'You must define an SMTP server in '
+                'no_smtp_server_defined': ('You must define an SMTP server in '
                     'order to send scheduled emails warning of new product '
-                    'reviews!',
-                'check_user_emails': 'No users with email defined in group '
-                    'product review!',
+                    'reviews!'),
+                'check_user_emails': ('No users with email defined in group '
+                    'product review!'),
                 'subject': 'New list of products to review',
-                'body': 'Dear employee,\n\n'
+                'body': ('Dear employee,\n\n'
                     'Here you have the new list of products to be reviewed:\n'
                     '\n%s\n\n'
                     'Thank you for your attention and good job!\n\n'
                     'Sincerely,\n\nthe Management Team.\n\n'
                     'Note: This messages has been generated and sent '
-                    'automatically, please do not repply.',
-                'smtp_error': 'Error connecting to SMTP server. '
-                    'Emails have not been sent',
+                    'automatically, please do not repply.'),
+                'smtp_error': ('Error connecting to SMTP server. '
+                    'Emails have not been sent'),
                 })
 
     @staticmethod
@@ -175,12 +175,12 @@ class ProductReview(ModelSQL, ModelView):
         smtp_server, = smtp_servers
 
         # Search recipients of emails
-        model_data, = ModelData.search([
-                ('fs_id', '=', 'product_review_group'),
-                ])
-        group, = Group.search([('id', '=', model_data.db_id)])
+        group = Group(ModelData.get_id(
+                'product_review', 'product_review_group'))
         recipients = [u.email for u in group.users if u.email]
-        if not recipients or not any(map(emailvalid.check_email, recipients)):
+        if (not recipients
+                or (emailvalid
+                    and not any(map(emailvalid.check_email, recipients)))):
             message = cls.raise_user_error('check_user_emails',
                 raise_exception=False)
             logger.warning(message)
@@ -213,4 +213,5 @@ class ProductReview(ModelSQL, ModelView):
 
             datamanager = SMTPDataManager()
             datamanager._server = smtp_server.get_smtp_server()
-            sendmail_transactional(from_, recipients, msg, datamanager=datamanager)
+            sendmail_transactional(
+                from_, recipients, msg, datamanager=datamanager)
