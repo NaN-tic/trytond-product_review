@@ -62,11 +62,11 @@ msgstr "Revisión"
 
 msgctxt "field:product.review,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.review,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.review,date:"
 msgid "Date"
@@ -98,11 +98,11 @@ msgstr "Estado"
 
 msgctxt "field:product.review,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.review,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.review.type,active:"
 msgid "Active"
@@ -110,11 +110,11 @@ msgstr "Activo"
 
 msgctxt "field:product.review.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.review.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.review.type,id:"
 msgid "ID"
@@ -130,11 +130,11 @@ msgstr "Nombre"
 
 msgctxt "field:product.review.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.review.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.template,review:"
 msgid "Review"
@@ -146,15 +146,15 @@ msgstr "Descripción revisión"
 
 msgctxt "field:product.template,review_types:"
 msgid "Review Types"
-msgstr "Tipos de revisiones"
+msgstr "Tipos de revisión"
 
 msgctxt "field:product.template-product.review.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.template-product.review.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.template-product.review.type,id:"
 msgid "ID"
@@ -174,15 +174,15 @@ msgstr "Tipo de revisión"
 
 msgctxt "field:product.template-product.review.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.template-product.review.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:product.configuration,review:"
 msgid "Active review option in product."
-msgstr "Activa la opción revisión en el producto."
+msgstr "Activa la opción de revisión en el producto."
 
 msgctxt "model:ir.action,name:act_product_review"
 msgid "Reviews"
@@ -190,7 +190,7 @@ msgstr "Revisiones"
 
 msgctxt "model:ir.action,name:act_product_review_type"
 msgid "Review Types"
-msgstr "Tipos de revisiones"
+msgstr "Tipos de revisión"
 
 msgctxt "model:ir.action.act_window.domain,name:act_product_review_domain_all"
 msgid "All"
@@ -199,20 +199,12 @@ msgstr "Todos"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_review_domain_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Realizar"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_review_domain_draft"
 msgid "Draft"
 msgstr "Borrador"
-
-msgctxt "model:ir.cron,name:"
-msgid "Products Review"
-msgstr "Revisión de productos"
-
-msgctxt "model:ir.cron,name:cron_product_review"
-msgid "Products Review"
-msgstr "Revisión de productos"
 
 msgctxt "model:ir.ui.menu,name:menu_product_review"
 msgid "Reviews"
@@ -220,15 +212,15 @@ msgstr "Revisiones"
 
 msgctxt "model:ir.ui.menu,name:menu_product_review_type"
 msgid "Review Types"
-msgstr "Tipos de revisiones"
+msgstr "Tipos de revisión"
 
 msgctxt "model:product.review,name:"
 msgid "Product Review"
-msgstr "Revisión de producto"
+msgstr "Revisión producto"
 
 msgctxt "model:product.review.type,name:"
 msgid "Product Review Type"
-msgstr "Tipo de revisión de producto"
+msgstr "Tipo revisión producto"
 
 msgctxt "model:product.template-product.review.type,name:"
 msgid "Template - Product Review Type"
@@ -236,11 +228,11 @@ msgstr "Plantilla - Tipo de revisión"
 
 msgctxt "model:res.group,name:product_review_group"
 msgid "Product Review"
-msgstr "Revisión de producto"
+msgstr "Revisión producto"
 
 msgctxt "selection:product.review,state:"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Realizar"
 
 msgctxt "selection:product.review,state:"
 msgid "Draft"
@@ -252,11 +244,11 @@ msgstr "Tipo de revisión"
 
 msgctxt "view:product.review.type:"
 msgid "Review Types"
-msgstr "Tipos de revisiones"
+msgstr "Tipos de revisión"
 
 msgctxt "view:product.review:"
 msgid "Done"
-msgstr "Finaliza"
+msgstr "Realizar"
 
 msgctxt "view:product.review:"
 msgid "Review Type"
@@ -264,7 +256,7 @@ msgstr "Tipo de revisión"
 
 msgctxt "view:product.review:"
 msgid "Review Types"
-msgstr "Tipos de revisiones"
+msgstr "Tipos de revisión"
 
 msgctxt "view:product.template:"
 msgid "Review"
