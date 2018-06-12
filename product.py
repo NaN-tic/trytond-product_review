@@ -108,8 +108,6 @@ class ProductReview(ModelSQL, ModelView):
                     'Sincerely,\n\nthe Management Team.\n\n'
                     'Note: This messages has been generated and sent '
                     'automatically, please do not repply.',
-                'smtp_error': 'Error connecting to SMTP server. '
-                    'Emails have not been sent',
                 })
 
     @staticmethod
@@ -208,13 +206,4 @@ class ProductReview(ModelSQL, ModelView):
             msg['From'] = from_
             msg['To'] = ', '.join(recipients)
 
-            try:
-                smtp_server = smtp_server.get_smtp_server()
-                smtp_server.sendmail(from_, recipients, msg.as_string())
-                smtp_server.quit()
-            except (SMTPAuthenticationError, SMTPServerDisconnected, gaierror,
-                    error):
-                message = cls.raise_user_error('smtp_error',
-                    raise_exception=False)
-                logger.info(message)
-                cls.raise_user_error('smtp_error')
+            smtp_server.send_mail(from_, recipients, msg.as_string())
