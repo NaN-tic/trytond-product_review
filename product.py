@@ -6,7 +6,6 @@ from email.mime.text import MIMEText
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.sendmail import SMTPDataManager, sendmail_transactional
 import logging
 
 logger = logging.getLogger(__name__)
@@ -207,6 +206,4 @@ class ProductReview(ModelSQL, ModelView):
             msg['From'] = from_
             msg['To'] = ', '.join(recipients)
 
-            datamanager = SMTPDataManager()
-            datamanager._server = smtp_server.get_smtp_server()
-            sendmail_transactional(from_, recipients, msg, datamanager=datamanager)
+            smtp_server.send_mail(from_, recipients, msg.as_string())
