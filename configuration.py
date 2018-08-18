@@ -6,8 +6,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Configuration']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'product.configuration'
     review = fields.Boolean('Review',
         help='Active review option in product.')

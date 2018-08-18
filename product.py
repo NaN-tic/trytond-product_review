@@ -21,8 +21,7 @@ __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
     'ProductReview']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     review = fields.Boolean('Review')
     review_types = fields.Many2Many('product.template-product.review.type',
