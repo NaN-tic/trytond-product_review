@@ -8,5 +8,5 @@ copyright notices and license terms. -->
     <field name="review_type"/>
     <field name="note"/>
     <field name="state"/>
-    <button name="done" string="Done"/>
+    <button name="done"/>
 </tree>

@@ -16,6 +16,6 @@ copyright notices and license terms. -->
         <field name="state"/>
     </group>
     <group col="2" colspan="2" id="review_buttons">
-        <button name="done" string="Done"/>
+        <button name="done"/>
     </group>
 </form>
