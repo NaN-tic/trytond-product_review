@@ -131,7 +131,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
         <record model="ir.model.button-res.group" id="product_done_button_group_account">
             <field name="button" ref="product_done_button"/>
-            <field name="group" ref="access_product_review_group"/>
+            <field name="group" ref="product_review_group"/>
         </record>
     </data>
     <data depends="smtp">
