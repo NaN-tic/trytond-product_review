@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data group="1">
+      <record model="ir.message" id="no_smtp_server_defined">
+          <field name="text">You must define an SMTP server in order to send scheduled emails warning of new product reviews!</field>
+      </record>
+      <record model="ir.message" id="check_user_emails">
+          <field name="text">No users with email defined in group product review!</field>
+      </record>
+      <record model="ir.message" id="subject">
+          <field name="text">New list of products to review</field>
+      </record>
+      <record model="ir.message" id="body">
+          <field name="text">Dear employee,\n\n Here you have the new list of products to be reviewed:\n\n%(message)s\n\n Thank you for your attention and good job!\n\n Sincerely,\n\nthe Management Team.\n\n Note: This messages has been generated and sent automatically, please do not repply.</field>
+      </record>
+      <record model="ir.message" id="smtp_error">
+          <field name="text">Error connecting to SMTP server. Emails have not been sent</field>
+      </record>
+    </data>
+</tryton>
