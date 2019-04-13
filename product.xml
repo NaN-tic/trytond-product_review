@@ -138,7 +138,6 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <record model="ir.cron" id="cron_product_review">
             <field name="name">Products Review</field>
             <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="res.user_trigger"/>
             <field name="active" eval="True"/>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
