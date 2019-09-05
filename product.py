@@ -89,7 +89,7 @@ class ProductReview(ModelSQL, ModelView):
         cls._buttons.update({
                 'done': {
                     'invisible': Eval('state') == 'done',
-                    'icon': 'tryton-go-next',
+                    'icon': 'tryton-forward',
                     },
                 })
 
