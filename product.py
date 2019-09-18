@@ -19,7 +19,18 @@ except ImportError:
     logger.error('Unable to import emailvalid. Install emailvalid package.')
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
-    'ProductReview']
+    'ProductReview', 'Cron']
+
+class Cron(metaclass=PoolMeta):
+    __name__ = "ir.cron"
+
+    @classmethod
+    def __setup__(cls):
+        super(Cron, cls).__setup__()
+        cls.method.selection.extend([
+            ('product.review|send_email',
+                'Product Review'),
+        ])
 
 
 class Template(metaclass=PoolMeta):

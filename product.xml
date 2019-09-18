@@ -134,15 +134,9 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
     </data>
     <data depends="smtp">
         <record model="ir.cron" id="cron_product_review">
-            <field name="name">Products Review</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="active" eval="True"/>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">days</field>
-            <field name="number_calls">-1</field>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">product.review</field>
-            <field name="function">send_email</field>
+            <field name="method">product.review|send_email</field>
         </record>
     </data>
 </tryton>
