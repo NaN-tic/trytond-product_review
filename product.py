@@ -3,7 +3,7 @@
 # the full copyright notices and license terms.
 from email.header import Header
 from email.mime.text import MIMEText
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, DeactivableMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
@@ -59,15 +59,10 @@ class Template(metaclass=PoolMeta):
             return config.review
 
 
-class ProductReviewType(ModelSQL, ModelView):
+class ProductReviewType(DeactivableMixin, ModelSQL, ModelView):
     'Product Review Type'
     __name__ = 'product.review.type'
     name = fields.Char('Name', required=True, translate=True)
-    active = fields.Boolean('Active', select=True)
-
-    @staticmethod
-    def default_active():
-        return True
 
 
 class TemplateProductReviewType(ModelSQL):
