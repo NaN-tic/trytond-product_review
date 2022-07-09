@@ -13,7 +13,19 @@ this repository contains the full copyright notices and license terms. -->
           <field name="text">New list of products to review</field>
       </record>
       <record model="ir.message" id="body">
-          <field name="text">Dear employee,\n\n Here you have the new list of products to be reviewed:\n\n%(message)s\n\n Thank you for your attention and good job!\n\n Sincerely,\n\nthe Management Team.\n\n Note: This messages has been generated and sent automatically, please do not repply.</field>
+          <field name="text">Dear employee,
+
+Here you have the new list of products to be reviewed:
+
+%(message)s
+
+Thank you for your attention and good job!
+
+Sincerely,
+
+the Management Team.
+
+Note: This messages has been generated and sent automatically, please do not repply.</field>
       </record>
       <record model="ir.message" id="smtp_error">
           <field name="text">Error connecting to SMTP server. Emails have not been sent</field>
