@@ -70,9 +70,9 @@ class TemplateProductReviewType(ModelSQL):
     __name__ = 'product.template-product.review.type'
     _table = 'product_template_product_review_type_rel'
     product_template = fields.Many2One('product.template', 'Product Template',
-            ondelete='CASCADE', select=True, required=True)
+            ondelete='CASCADE', required=True)
     review_type = fields.Many2One('product.review.type',
-        'Review Type', ondelete='CASCADE', select=True, required=True)
+        'Review Type', ondelete='CASCADE', required=True)
 
 
 class ProductReview(ModelSQL, ModelView):
