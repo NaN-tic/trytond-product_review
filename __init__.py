@@ -14,4 +14,5 @@ def register():
         product.ProductReview,
         product.Template,
         product.TemplateProductReviewType,
+        product.Product,
         module='product_review', type_='model')

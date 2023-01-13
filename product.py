@@ -59,6 +59,10 @@ class Template(metaclass=PoolMeta):
             return config.review
 
 
+class Product(metaclass=PoolMeta):
+    __name__ = 'product.product'
+
+
 class ProductReviewType(DeactivableMixin, ModelSQL, ModelView):
     'Product Review Type'
     __name__ = 'product.review.type'
