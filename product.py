@@ -40,15 +40,11 @@ class Template(metaclass=PoolMeta):
             'product_template', 'review_type', 'Review Types',
         states={
             'invisible': ~Eval('review'),
-            },
-        depends=['review'],
-        )
+            })
     review_description = fields.Text('Review Description',
         states={
             'invisible': ~Eval('review'),
-            },
-        depends=['review'],
-        )
+            })
 
     @staticmethod
     def default_review():
