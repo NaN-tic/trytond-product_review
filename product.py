@@ -3,6 +3,7 @@
 # the full copyright notices and license terms.
 from email.header import Header
 from email.mime.text import MIMEText
+from trytond.config import config
 from trytond.model import ModelSQL, ModelView, DeactivableMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -195,10 +196,10 @@ class ProductReview(ModelSQL, ModelView):
             message = gettext('product_review.body', message=records)
             subject = gettext('product_review.subject')
 
-            from_ = smtp_server.smtp_email
+            from_cfg = config.get('email', 'from')
             msg = MIMEText(message, _charset='utf-8')
             msg['Subject'] = Header(subject, 'utf-8')
-            msg['From'] = from_
+            msg['From'] = from_cfg
             msg['To'] = ', '.join(recipients)
 
-            sendmail_transactional(from_, recipients, msg)
+            sendmail_transactional(from_cfg, recipients, msg)
