@@ -107,14 +107,14 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="group" ref="product_review_group"/>
         </record>
         <record model="ir.model.access" id="access_product_review">
-            <field name="model" search="[('model', '=', 'product.review')]"/>
+            <field name="model">product.review</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_review_group">
-            <field name="model" search="[('model', '=', 'product.review')]"/>
+            <field name="model">product.review</field>
             <field name="group" ref="product_review_group"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -125,7 +125,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <record model="ir.model.button" id="product_done_button">
             <field name="name">done</field>
             <field name="string">Done</field>
-            <field name="model" search="[('model', '=', 'product.review')]"/>
+            <field name="model">product.review</field>
         </record>
         <record model="ir.model.button-res.group" id="product_done_button_group_account">
             <field name="button" ref="product_done_button"/>
