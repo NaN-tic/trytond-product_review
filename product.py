@@ -152,7 +152,7 @@ class ProductReview(ModelSQL, ModelView):
         Group = pool.get('res.group')
         Cron = pool.get('ir.cron')
 
-        model, = Model.search([('model', '=', cls.__name__)])
+        model, = Model.search([('name', '=', cls.__name__)])
         smtp_servers = SMTPServer.search([('models', '=', model.id)],
             limit=1)
         if not smtp_servers:
