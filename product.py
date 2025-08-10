@@ -129,7 +129,8 @@ class ProductReview(ModelSQL, ModelView):
                     ]
                 })
             templates.append(template)
-        Template.write(*args)
+        if args:
+            Template.write(*args)
 
         args = []
         for template in templates:
