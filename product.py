@@ -8,16 +8,11 @@ from trytond.model import ModelSQL, ModelView, DeactivableMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.sendmail import sendmail_transactional
+from trytond.tools.email_ import validate_email, EmailNotValidError
 import logging
 from trytond.i18n import gettext
 
 logger = logging.getLogger(__name__)
-
-try:
-    import emailvalid
-except ImportError:
-    emailvalid = None
-    logger.error('Unable to import emailvalid. Install emailvalid package.')
 
 __all__ = ['Template', 'ProductReviewType', 'TemplateProductReviewType',
     'ProductReview', 'Cron']
@@ -168,9 +163,16 @@ class ProductReview(ModelSQL, ModelView):
         group = Group(ModelData.get_id(
                 'product_review', 'product_review_group'))
         recipients = [u.email for u in group.users if u.email]
-        if (not recipients
-                or (emailvalid
-                    and not any(map(emailvalid.check_email, recipients)))):
+        has_valid_recipient = False
+        for email in recipients:
+            try:
+                validate_email(email)
+            except EmailNotValidError:
+                continue
+            else:
+                has_valid_recipient = True
+                break
+        if not recipients or not has_valid_recipient:
             message = gettext('product_review.check_user_emails')
             logger.warning(message)
             return
