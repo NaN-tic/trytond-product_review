@@ -3,7 +3,7 @@
 # the full copyright notices and license terms.
 from email.header import Header
 from email.mime.text import MIMEText
-from trytond.config import config
+import trytond.config as config
 from trytond.model import ModelSQL, ModelView, DeactivableMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
